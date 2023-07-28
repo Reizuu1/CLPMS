@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Leasing Management System"
+        android:roundIcon="@android:drawable/checkbox_on_background"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <activity
+            android:name=".ManagerDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".LessorDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".LesseeDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".ManagerLoginPage"
+            android:exported="false" />
+        <activity
+            android:name=".LessorLoginPage"
+            android:exported="false" />
+        <activity
+            android:name=".LesseeLoginPage"
+            android:exported="false" />
+        <activity
+            android:name=".LoginPage"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

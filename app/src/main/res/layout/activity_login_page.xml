@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C12020"
+    android:backgroundTint="#FFFFFF"
+    tools:context=".LoginPage">
+
+
+    <ImageView
+        android:id="@+id/house"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="Image Description"
+        android:scaleType="centerCrop"
+        android:src="@drawable/house" />
+
+    <TextView
+        android:id="@+id/Welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/house"
+
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="-15dp"
+        android:gravity="left"
+        android:text="Welcome to"
+        android:textColor="#22215B"
+        android:textSize="35dp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/leasing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Welcome"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="-15dp"
+        android:gravity="left"
+        android:text="Leasing"
+        android:textColor="#22215B"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_lessee"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/leasing"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#567DF4"
+        android:textColor="#FFFFFF"
+        android:text="Login As Lessee"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:cornerRadius="15dp"
+        android:onClick="LoginAsLessee"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_lessor"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_below="@id/login_lessee"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#567DF4"
+        android:textColor="#FFFFFF"
+        android:text="Login As Lessor"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:cornerRadius="15dp"
+        android:onClick="LoginAsLessor"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_manager"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/login_lessor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#567DF4"
+        android:textColor="#FFFFFF"
+        android:text="Login As Manager"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:cornerRadius="15dp"
+        android:onClick="LoginAsManager"/>
+
+
+</RelativeLayout>

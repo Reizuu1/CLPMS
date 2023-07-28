@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/outline_home_24"
+        android:title="Home"/>
+    <item
+        android:id="@+id/property"
+        android:title="Property"
+        android:icon="@drawable/outline_signpost_24"/>
+    <item
+        android:id="@+id/lessee"
+        android:title="Lessee"
+        android:icon="@drawable/baseline_people_outline_24"/>
+    <item
+        android:id="@+id/reminder"
+        android:title="Reminder"
+        android:icon="@drawable/baseline_date_range_24"/>
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:icon="@drawable/outline_person_outline_24"/>
+</menu>
