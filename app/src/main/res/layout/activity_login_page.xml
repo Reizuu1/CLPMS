@@ -65,7 +65,7 @@
         android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:cornerRadius="15dp"
+        app:cornerRadius="20dp"
         android:onClick="LoginAsLessee"/>
 
     <com.google.android.material.button.MaterialButton
