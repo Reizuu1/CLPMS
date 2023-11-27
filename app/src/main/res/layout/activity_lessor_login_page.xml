@@ -96,7 +96,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="17dp"
                 android:textStyle="bold"
-                app:cornerRadius="15dp" />
+                app:cornerRadius="15dp"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
