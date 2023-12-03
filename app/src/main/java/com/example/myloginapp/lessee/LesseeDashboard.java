@@ -22,7 +22,7 @@ public class LesseeDashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lessee_dashboard);
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationViewLessee);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container,lesseeHomeFragment).commit();
 

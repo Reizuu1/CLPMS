@@ -15,10 +15,13 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="108dp"
         android:id="@+id/bottomNavigationViewManager"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
         android:layout_alignParentBottom="true"
-        app:menu="@menu/manager_bottom_navigation" />
+        app:menu="@menu/manager_bottom_navigation"
+        android:background="@drawable/bottomnavbg" />
 
 
 </RelativeLayout>
