@@ -10,7 +10,7 @@
         android:label="Leasing Management System"
         android:roundIcon="@android:drawable/checkbox_on_background"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar">
+        android:theme="@style/Theme.MyLoginApp">
         <activity
             android:name=".manager.ManagerDashboard"
             android:exported="false" />
