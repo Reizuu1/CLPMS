@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/buildings_background"
-    tools:context=".LessorLoginPage">
+    tools:context=".lessor.LessorLoginPage">
 
     <androidx.cardview.widget.CardView
         android:layout_width="370dp"
@@ -28,20 +28,23 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@id/one_step_away"
                 android:layout_centerHorizontal="true"
-                android:gravity="left"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="left"
+
                 android:text="Welcome
                 Lessor!"
-                android:textColor="#000000"
-                android:textSize="35dp"
+                android:textColor="#14223B"
+                android:textSize="32dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Username"
-                android:textColor="#000000"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="#14223B"
                 android:textSize="15sp" />
 
             <EditText
@@ -50,13 +53,14 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:background="@drawable/rounded_edittext"
+                android:fontFamily="@font/karla"
                 android:hint="Username"
                 android:inputType="text"
                 android:maxLines="1"
                 android:padding="12dp"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                android:textColorHint="#AE000000" />
+                android:textColor="#14223B"
+                android:textColorHint="#14223B"
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/one_step_away"
@@ -64,7 +68,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Password"
-                android:textColor="#000000"
+                android:fontFamily="@font/inter_medium"
+                android:textColor="#14223B"
                 android:textSize="15sp" />
 
             <EditText
@@ -72,24 +77,25 @@
                 android:layout_width="310dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/rounded_edittext"
+                android:fontFamily="@font/karla"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:padding="12dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="#000000"
-                android:textSize="15dp"
-                android:textColorHint="#AE000000"
-                android:textColorLink="#000000"
-                android:layout_marginBottom="20dp"/>
+                android:textColor="#14223B"
+                android:textColorHighlight="#14223B"
+                android:textColorHint="#14223B"
+                android:textColorLink="#14223B"
+                android:textSize="15dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_lessee"
                 android:layout_width="310dp"
                 android:layout_height="69dp"
                 android:layout_gravity="center"
-                android:backgroundTint="#000000"
+                android:backgroundTint="#0B182B"
                 android:onClick="goToDashboardLessor"
                 android:text="Login"
                 android:textAllCaps="false"
@@ -97,6 +103,14 @@
                 android:textSize="17dp"
                 android:textStyle="bold"
                 app:cornerRadius="15dp"/>
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:visibility="invisible"
+                android:layout_marginTop="-50dp"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

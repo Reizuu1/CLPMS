@@ -28,11 +28,13 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@id/one_step_away"
                 android:layout_centerHorizontal="true"
-                android:gravity="left"
                 android:layout_marginTop="20dp"
+                android:gravity="left"
                 android:text="Welcome!"
-                android:textColor="#000000"
-                android:textSize="35dp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/inter_bold"
+                android:textColor="#0B182B"
+                android:textSize="32dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -44,7 +46,9 @@
                 android:gravity="left"
                 android:text="Lessee, Lessor, Manager!"
                 android:textColor="#7B7F9E"
-                android:textSize="17dp" />
+                android:textSize="17dp"
+                android:fontFamily="@font/inter_medium"
+                android:layout_marginLeft="8dp"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_lessee"
@@ -52,45 +56,51 @@
                 android:layout_height="69dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
-                android:backgroundTint="#000000"
+                android:backgroundTint="#0B182B"
+                android:fontFamily="@font/inter_semibold"
                 android:onClick="LoginAsLessee"
                 android:text="Login As Lessee"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
-                android:textSize="15dp"
+                android:textSize="14dp"
                 android:textStyle="bold"
                 app:cornerRadius="15dp"
+
                 android:elevation="10dp"
                 android:translationZ="2dp"
                 android:stateListAnimator="@null"/>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_lessor"
                 android:layout_width="310dp"
                 android:layout_height="69dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
-                android:backgroundTint="#000000"
+                android:backgroundTint="#0B182B"
                 android:onClick="LoginAsLessor"
                 android:text="Login As Lessor"
+                android:fontFamily="@font/inter_semibold"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
-                android:textSize="17dp"
+                android:textSize="14dp"
                 android:textStyle="bold"
                 app:cornerRadius="15dp"
                 android:elevation="10dp"
                 android:translationZ="2dp"
                 android:stateListAnimator="@null"/>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_manager"
                 android:layout_width="310dp"
                 android:layout_height="69dp"
                 android:layout_gravity="center"
-                android:backgroundTint="#000000"
+                android:backgroundTint="#0B182B"
                 android:onClick="LoginAsManager"
                 android:text="Login As Manager"
+                android:fontFamily="@font/inter_semibold"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
-                android:textSize="17dp"
+                android:textSize="14dp"
                 android:textStyle="bold"
                 app:cornerRadius="15dp"
                 android:elevation="10dp"

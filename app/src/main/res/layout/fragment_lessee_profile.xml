@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LesseeProfileFragment">
+    tools:context=".lessee.LesseeProfileFragment">
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/LogoutButton"
@@ -22,11 +22,53 @@
         app:cornerRadius="15dp" />
 
     <TextView
+        android:id="@+id/Home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="-15dp"
+        android:gravity="center"
+        android:text="Profile"
+        android:textColor="#22215B"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
-        android:layout_centerInParent="true"/>
+        android:src="@drawable/frame_173"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="167dp"/>
 
+    <TextView
+        android:id="@+id/account_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="-15dp"
+        android:gravity="center"
+        android:text="Maria Teresa Rapsing"
+        android:textColor="#1A1E25"
+        android:textSize="24dp"
+        android:textStyle="bold"/>
 
+    <TextView
+        android:id="@+id/account_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="-15dp"
+        android:gravity="center"
+        android:text="rapsingmateresa@gmail.com"
+        android:textColor="#7D7F88"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
 
 </RelativeLayout>

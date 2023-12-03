@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:paddingTop="40dp"
-        android:text="Your Property"
+        android:text="John Jeric's Property"
         android:textColor="#22215B"
         android:textSize="23dp"
         android:textStyle="bold" />

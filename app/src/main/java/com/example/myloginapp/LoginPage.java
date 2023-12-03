@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.myloginapp.lessee.LesseeLoginPage;
+import com.example.myloginapp.lessor.LessorLoginPage;
+import com.example.myloginapp.manager.ManagerLoginPage;
+
 public class LoginPage extends AppCompatActivity {
 
     @Override
