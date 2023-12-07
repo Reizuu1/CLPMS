@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.example.myloginapp.api.ApiEndpoints;
 import com.example.myloginapp.R;
 import com.example.myloginapp.databinding.ActivityLesseeLoginPageBinding;
-import com.example.myloginapp.databinding.ActivityLoginPageBinding;
 import com.google.gson.JsonObject;
 
 import okhttp3.MediaType;
@@ -34,7 +33,7 @@ public class LesseeLoginPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lessor_login_page);
+        setContentView(R.layout.activity_lessee_login_page);
 
         username = findViewById(R.id.LesseeUsername);
         password = findViewById(R.id.LesseePassword);
@@ -119,9 +118,9 @@ public class LesseeLoginPage extends AppCompatActivity {
     private void loading(Boolean isLoading) {
         if (isLoading) {
             binding.loginLessee.setVisibility(View.INVISIBLE);
-            binding.progressbar.setVisibility(View.VISIBLE);
+            binding.lesseeProgressbar.setVisibility(View.VISIBLE);
         } else {
-            binding.progressbar.setVisibility(View.VISIBLE);
+            binding.lesseeProgressbar.setVisibility(View.VISIBLE);
             binding.loginLessee.setVisibility(View.INVISIBLE);
         }
     }

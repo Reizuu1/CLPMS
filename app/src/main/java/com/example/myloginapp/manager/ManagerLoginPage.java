@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.example.myloginapp.api.ApiEndpoints;
 import com.example.myloginapp.R;
 import com.example.myloginapp.databinding.ActivityManagerLoginPageBinding;
-import com.example.myloginapp.lessor.LessorDashboard;
 import com.google.gson.JsonObject;
 
 import okhttp3.MediaType;
@@ -34,11 +33,11 @@ public class ManagerLoginPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lessor_login_page);
+        setContentView(R.layout.activity_manager_login_page);
 
-        username = findViewById(R.id.LesseeUsername);
-        password = findViewById(R.id.LesseePassword);
-        signIn = findViewById(R.id.login_lessee);
+        username = findViewById(R.id.ManagerUsername);
+        password = findViewById(R.id.ManagerPassword);
+        signIn = findViewById(R.id.login_manager);
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,11 +115,11 @@ public class ManagerLoginPage extends AppCompatActivity {
     }
     private void loading(Boolean isLoading) {
         if (isLoading) {
-            binding.loginmanager.setVisibility(View.INVISIBLE);
-            binding.progressbar.setVisibility(View.VISIBLE);
+            binding.loginManager.setVisibility(View.INVISIBLE);
+            binding.managerProgressbar.setVisibility(View.VISIBLE);
         } else {
-            binding.progressbar.setVisibility(View.VISIBLE);
-            binding.loginmanager.setVisibility(View.INVISIBLE);
+            binding.managerProgressbar.setVisibility(View.VISIBLE);
+            binding.loginManager.setVisibility(View.INVISIBLE);
         }
     }
 }

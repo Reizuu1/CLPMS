@@ -48,7 +48,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/LesseeUsername"
+                android:id="@+id/LessorUsername"
                 android:layout_width="310dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -73,7 +73,7 @@
                 android:textSize="15sp" />
 
             <EditText
-                android:id="@+id/LesseePassword"
+                android:id="@+id/LessorPassword"
                 android:layout_width="310dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -91,7 +91,7 @@
                 android:textSize="15dp" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/login_lessee"
+                android:id="@+id/login_lessor"
                 android:layout_width="310dp"
                 android:layout_height="69dp"
                 android:layout_gravity="center"
@@ -105,7 +105,7 @@
                 app:cornerRadius="15dp"/>
 
             <ProgressBar
-                android:id="@+id/progressbar"
+                android:id="@+id/lessor_progressbar"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"

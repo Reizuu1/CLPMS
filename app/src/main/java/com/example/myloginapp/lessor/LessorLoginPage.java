@@ -35,9 +35,9 @@ public class LessorLoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lessor_login_page);
 
-        username = findViewById(R.id.LesseeUsername);
-        password = findViewById(R.id.LesseePassword);
-        signIn = findViewById(R.id.login_lessee);
+        username = findViewById(R.id.LessorUsername);
+        password = findViewById(R.id.LessorPassword);
+        signIn = findViewById(R.id.login_lessor);
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,11 +113,11 @@ public class LessorLoginPage extends AppCompatActivity {
     }
     private void loading(Boolean isLoading) {
         if (isLoading) {
-            binding.loginLessee.setVisibility(View.INVISIBLE);
-            binding.progressbar.setVisibility(View.VISIBLE);
+            binding.loginLessor.setVisibility(View.INVISIBLE);
+            binding.lessorProgressbar.setVisibility(View.VISIBLE);
         } else {
-            binding.progressbar.setVisibility(View.VISIBLE);
-            binding.loginLessee.setVisibility(View.INVISIBLE);
+            binding.lessorProgressbar.setVisibility(View.VISIBLE);
+            binding.loginLessor.setVisibility(View.INVISIBLE);
         }
     }
 }

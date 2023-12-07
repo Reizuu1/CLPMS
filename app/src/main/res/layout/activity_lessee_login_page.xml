@@ -107,7 +107,7 @@
                 app:cornerRadius="15dp" />
 
             <ProgressBar
-                android:id="@+id/progressbar"
+                android:id="@+id/lessee_progressbar"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
