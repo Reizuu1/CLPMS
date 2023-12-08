@@ -13,7 +13,15 @@ import android.widget.Toast;
 
 import com.example.myloginapp.api.ApiEndpoints;
 import com.example.myloginapp.R;
+import com.example.myloginapp.databinding.ActivityLessorLoginPageBinding;
 import com.example.myloginapp.databinding.ActivityManagerLoginPageBinding;
+import com.example.myloginapp.lessee.LesseeDashboard;
+import com.example.myloginapp.lessee.LesseeLoginPage;
+import com.example.myloginapp.lessor.LessorLoginPage;
+import com.example.myloginapp.utilities.Constants;
+import com.example.myloginapp.utilities.PreferenceManager;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.JsonObject;
 
 import okhttp3.MediaType;
@@ -28,12 +36,22 @@ public class ManagerLoginPage extends AppCompatActivity {
     private EditText username, password;
     private AppCompatButton signIn;
     private ActivityManagerLoginPageBinding binding;
+    private PreferenceManager preferenceManager;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_login_page);
+        binding = ActivityManagerLoginPageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        preferenceManager = new PreferenceManager(getApplicationContext());
+        if (preferenceManager.getBoolean(Constants.KEY_IS_SIGNED_INMANAGER)) {
+            Intent intent = new Intent(getApplicationContext(), LesseeDashboard.class);
+            startActivity(intent);
+            finish();
+        }
 
         username = findViewById(R.id.ManagerUsername);
         password = findViewById(R.id.ManagerPassword);
@@ -43,10 +61,12 @@ public class ManagerLoginPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Check valid username and password
-                loading(true);
                 String getUsername = username.getText().toString().trim();
                 String getPassword = password.getText().toString().trim();
-                checkUsernameAndPassword(getUsername, getPassword);
+                if (isValidSignIn()) {
+                    signIn();
+                    checkUsernameAndPassword(getUsername,getPassword);
+                }
             }
         });
     }
@@ -85,12 +105,13 @@ public class ManagerLoginPage extends AppCompatActivity {
                     String contactNumber = createReponse.getContactnumber();
 
                     storeUserData(userId, password, username, contactNumber);
-                    loading(false);
                     Toast.makeText(ManagerLoginPage.this, "Successfully login", Toast.LENGTH_SHORT).show();
 
                     // Finish the current SignIn activity
                     finish();
-                    startActivity(new Intent(ManagerLoginPage.this, ManagerDashboard.class));
+                    Intent intent = new Intent(getApplicationContext(), ManagerDashboard.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(ManagerLoginPage.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
                 }
@@ -121,5 +142,40 @@ public class ManagerLoginPage extends AppCompatActivity {
             binding.managerProgressbar.setVisibility(View.VISIBLE);
             binding.loginManager.setVisibility(View.INVISIBLE);
         }
+    }
+
+    private Boolean isValidSignIn(){
+        if (binding.ManagerUsername.getText().toString().trim().isEmpty()) {
+            Toast.makeText(ManagerLoginPage.this, "Please enter your username", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (binding.ManagerPassword.getText().toString().trim().isEmpty()) {
+            Toast.makeText(ManagerLoginPage.this, "Please enter your password", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+    private void showToast(String message) {
+        Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
+    }
+    private void signIn(){
+        loading(true);
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        database.collection(Constants.KEY_COLLECTION_MANAGERUSERS)
+                .whereEqualTo(Constants.KEY_USERNAME, binding.ManagerUsername.getText().toString())
+                .whereEqualTo(Constants.KEY_PASSWORD, binding.ManagerPassword.getText().toString())
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && task.getResult() !=null
+                            && task.getResult().getDocuments().size() > 0) {
+                        DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+                        preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_INMANAGER,true);
+                        preferenceManager.putString(Constants.KEY_USER_ID, documentSnapshot.getId());
+                        preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
+
+                    } else {
+                        loading(false);
+                    }
+                });
     }
 }

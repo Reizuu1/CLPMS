@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import com.example.myloginapp.MainActivity;
 import com.example.myloginapp.R;
+import com.example.myloginapp.lessor.LessorDashboard;
 
 public class ManagerProfileFragment extends Fragment {
 
@@ -35,9 +36,18 @@ public class ManagerProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Start the TargetActivity when the button is clicked
+                callActivityMethod();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });
+    }
+
+    private void callActivityMethod() {
+        ManagerDashboard activity = (ManagerDashboard) getActivity();
+
+        if (activity != null) {
+            activity.signOutManager();
+        }
     }
 }

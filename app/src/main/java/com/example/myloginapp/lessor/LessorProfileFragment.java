@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import com.example.myloginapp.MainActivity;
 import com.example.myloginapp.R;
+import com.example.myloginapp.lessee.LesseeDashboard;
 
 public class LessorProfileFragment extends Fragment {
 
@@ -36,9 +37,18 @@ public class LessorProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 // Start the TargetActivity when the button is clicked
+                callActivityMethod();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });
+    }
+
+    private void callActivityMethod() {
+        LessorDashboard activity = (LessorDashboard) getActivity();
+
+        if (activity != null) {
+            activity.signOutLessor();
+        }
     }
 }

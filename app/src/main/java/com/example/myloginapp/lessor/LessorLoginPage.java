@@ -14,6 +14,12 @@ import android.widget.Toast;
 import com.example.myloginapp.api.ApiEndpoints;
 import com.example.myloginapp.R;
 import com.example.myloginapp.databinding.ActivityLessorLoginPageBinding;
+import com.example.myloginapp.lessee.LesseeDashboard;
+import com.example.myloginapp.lessee.LesseeLoginPage;
+import com.example.myloginapp.utilities.Constants;
+import com.example.myloginapp.utilities.PreferenceManager;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.gson.JsonObject;
 
 import okhttp3.MediaType;
@@ -28,12 +34,21 @@ public class LessorLoginPage extends AppCompatActivity {
     private EditText username, password;
     private AppCompatButton signIn;
     private ActivityLessorLoginPageBinding binding;
+    private PreferenceManager preferenceManager;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lessor_login_page);
+        binding = ActivityLessorLoginPageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        preferenceManager = new PreferenceManager(getApplicationContext());
+        if (preferenceManager.getBoolean(Constants.KEY_IS_SIGNED_INLESSOR)) {
+            Intent intent = new Intent(getApplicationContext(), LesseeDashboard.class);
+            startActivity(intent);
+            finish();
+        }
 
         username = findViewById(R.id.LessorUsername);
         password = findViewById(R.id.LessorPassword);
@@ -45,7 +60,10 @@ public class LessorLoginPage extends AppCompatActivity {
                 //Check valid username and password
                 String getUsername = username.getText().toString().trim();
                 String getPassword = password.getText().toString().trim();
-                checkUsernameAndPassword(getUsername, getPassword);
+                if (isValidSignIn()) {
+                    signIn();
+                    checkUsernameAndPassword(getUsername,getPassword);
+                }
             }
         });
     }
@@ -88,7 +106,9 @@ public class LessorLoginPage extends AppCompatActivity {
 
                     // Finish the current SignIn activity
                     finish();
-                    startActivity(new Intent(LessorLoginPage.this, LessorDashboard.class));
+                    Intent intent = new Intent(getApplicationContext(),LessorDashboard.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(LessorLoginPage.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
                 }
@@ -119,5 +139,39 @@ public class LessorLoginPage extends AppCompatActivity {
             binding.lessorProgressbar.setVisibility(View.VISIBLE);
             binding.loginLessor.setVisibility(View.INVISIBLE);
         }
+    }
+    private Boolean isValidSignIn(){
+        if (binding.LessorUsername.getText().toString().trim().isEmpty()) {
+            Toast.makeText(LessorLoginPage.this, "Please enter your username", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (binding.LessorPassword.getText().toString().trim().isEmpty()) {
+            Toast.makeText(LessorLoginPage.this, "Please enter your password", Toast.LENGTH_SHORT).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
+    private void showToast(String message) {
+        Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
+    }
+    private void signIn(){
+        loading(true);
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        database.collection(Constants.KEY_COLLECTION_LESSORUSERS)
+                .whereEqualTo(Constants.KEY_USERNAME, binding.LessorUsername.getText().toString())
+                .whereEqualTo(Constants.KEY_PASSWORD, binding.LessorPassword.getText().toString())
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful() && task.getResult() !=null
+                            && task.getResult().getDocuments().size() > 0) {
+                        DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
+                        preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_INLESSOR,true);
+                        preferenceManager.putString(Constants.KEY_USER_ID, documentSnapshot.getId());
+                        preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
+
+                    } else {
+                        loading(false);
+                    }
+                });
     }
 }

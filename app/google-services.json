@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "535338328541",
-    "project_id": "clpms-a3937",
-    "storage_bucket": "clpms-a3937.appspot.com"
+    "project_number": "157294855499",
+    "project_id": "chat-app-9c891",
+    "storage_bucket": "chat-app-9c891.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:535338328541:android:29e2130a596d6429b99634",
+        "mobilesdk_app_id": "1:157294855499:android:da7d9196ba6ee38926d4ce",
         "android_client_info": {
           "package_name": "com.example.myloginapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC5CNO_joktupNBRzK5vklafwKM1ULjdsI"
+          "current_key": "AIzaSyAGYINqI7nWdvXqY3Ybl6ImBCD8EoFRBBQ"
         }
       ],
       "services": {
