@@ -19,6 +19,9 @@
         android:id="@+id/bottomNavigationViewManager"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
+        app:itemBackground="@drawable/blue_line"
+        app:labelVisibilityMode="unlabeled"
+        android:padding="10dp"
         android:layout_alignParentBottom="true"
         app:menu="@menu/manager_bottom_navigation"
         android:background="@drawable/bottomnavbg" />

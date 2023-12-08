@@ -14,13 +14,16 @@
         android:layout_above="@+id/bottomNavigationViewLessor"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationViewLessor"
         android:layout_width="match_parent"
         android:layout_height="108dp"
-        android:id="@+id/bottomNavigationViewLessor"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
+        app:itemBackground="@drawable/blue_line"
         android:layout_alignParentBottom="true"
         app:menu="@menu/lessor_bottom_navigation"
+        app:labelVisibilityMode="unlabeled"
+        android:padding="10dp"
         android:background="@drawable/bottomnavbg"/>
 
 

@@ -28,30 +28,29 @@ public class LessorDashboard extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container,lessorHomeFragment).commit();
 
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.home:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,lessorHomeFragment).commit();
-                        return true;
-                    case R.id.property:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,lessorPropertyFragment).commit();
-                        return true;
-                    case R.id.lessee:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,lessorLesseeFragment).commit();
-                        return true;
-                    case R.id.reminder:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,lessorReminderFragment).commit();
-                        return true;
-                    case R.id.profile:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,lessorProfileFragment).commit();
-                        return true;
-                }
-
-                return false;
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.home:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container,lessorHomeFragment).commit();
+                    return true;
+                case R.id.property:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container,lessorPropertyFragment).commit();
+                    return true;
+                case R.id.lessee:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container,lessorLesseeFragment).commit();
+                    return true;
+                case R.id.reminder:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container,lessorReminderFragment).commit();
+                    return true;
+                case R.id.profile:
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container,lessorProfileFragment).commit();
+                    return true;
             }
+
+            return false;
         });
 
     }
+
+
 }
