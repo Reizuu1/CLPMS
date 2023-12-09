@@ -4,18 +4,18 @@
 
     <item
         android:id="@+id/home"
-        android:icon="@drawable/outline_home_24"
+        android:icon="@drawable/ic_home_24px_1"
         android:title="home"/>
     <item
         android:id="@+id/property"
         android:title="property"
-        android:icon="@drawable/outline_signpost_24"/>
+        android:icon="@drawable/property"/>
     <item
         android:id="@+id/concern"
         android:title="concern"
-        android:icon="@drawable/outline_chat_24"/>
+        android:icon="@drawable/chat"/>
     <item
         android:id="@+id/profile"
         android:title="profile"
-        android:icon="@drawable/outline_person_outline_24"/>
+        android:icon="@drawable/account"/>
 </menu>

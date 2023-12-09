@@ -17,7 +17,7 @@
         android:id="@+id/bottomNavigationViewLessor"
         android:layout_width="match_parent"
         android:layout_height="108dp"
-        app:itemIconTint="@color/white"
+        app:itemIconTint="@drawable/bgforbottomnav"
         app:itemTextColor="@color/white"
         app:itemBackground="@drawable/blue_line"
         android:layout_alignParentBottom="true"
