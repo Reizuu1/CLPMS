@@ -1,6 +1,7 @@
 package com.example.myloginapp.api;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ApiClient {
     private final String BASE_URL = "https://ap-southeast-1.aws.data.mongodb-api.com/";
@@ -15,6 +16,16 @@ public class ApiClient {
     }
     public static ApiEndpoints getApiService() {
         return apiEndpoints;
+    }
+    private static Retrofit retrofit = null;
+    public static Retrofit getClient(){
+        if(retrofit == null) {
+            retrofit = new Retrofit.Builder()
+                    .baseUrl("https://fcm.googleapis.com/fcm/")
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .build();
+        }
+        return retrofit;
     }
 }
 

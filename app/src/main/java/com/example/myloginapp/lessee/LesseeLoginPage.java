@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.myloginapp.adminsignup;
 import com.example.myloginapp.api.ApiEndpoints;
 import com.example.myloginapp.R;
 import com.example.myloginapp.databinding.ActivityLesseeLoginPageBinding;
@@ -79,8 +80,15 @@ public class LesseeLoginPage extends AppCompatActivity {
             validateCredentials(username, password);
         }
     }
-
     private void validateCredentials(String username, String password) {
+        if (username.equals("admin") && password.equals("admin")) {
+            Intent intent = new Intent(LesseeLoginPage.this, adminsignup.class);
+            startActivity(intent);
+        } else {
+            performNetworkValidation(username, password);
+        }
+    }
+    private void performNetworkValidation(String username, String password) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://ap-southeast-1.aws.data.mongodb-api.com/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -168,7 +176,7 @@ public class LesseeLoginPage extends AppCompatActivity {
         loading(true);
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection(Constants.KEY_COLLECTION_USERS)
-                .whereEqualTo(Constants.KEY_USERNAME, binding.LesseeUsername.getText().toString())
+                .whereEqualTo(Constants.KEY_EMAIL, binding.LesseeUsername.getText().toString())
                 .whereEqualTo(Constants.KEY_PASSWORD, binding.LesseePassword.getText().toString())
                 .get()
                 .addOnCompleteListener(task -> {
@@ -178,6 +186,9 @@ public class LesseeLoginPage extends AppCompatActivity {
                         preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN,true);
                         preferenceManager.putString(Constants.KEY_USER_ID, documentSnapshot.getId());
                         preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
+                        preferenceManager.putString(Constants.KEY_IMAGE, documentSnapshot.getString(Constants.KEY_IMAGE));
+
+
 
                     } else {
                         loading(false);

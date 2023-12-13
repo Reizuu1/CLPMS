@@ -24,7 +24,7 @@
         android:padding="10dp"
         android:layout_alignParentBottom="true"
         app:menu="@menu/lessee_bottom_navigation"
-        android:background="@drawable/bottomnavbg"/>
+        android:background="@drawable/bottomnavbg" />
 
 
 </RelativeLayout>
