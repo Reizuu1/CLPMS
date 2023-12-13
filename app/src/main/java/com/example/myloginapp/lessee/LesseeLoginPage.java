@@ -63,15 +63,14 @@ public class LesseeLoginPage extends AppCompatActivity {
 
                 String getUsername = username.getText().toString().trim();
                 String getPassword = password.getText().toString().trim();
-                if (isValidSignIn()) {
-                    signIn();
                     checkUsernameAndPassword(getUsername,getPassword);
-                }
+
             }
         });
     }
 
     private void checkUsernameAndPassword(String username, String password) {
+        loading(true);
         if (username.isEmpty()) {
             Toast.makeText(LesseeLoginPage.this, "Please enter your username", Toast.LENGTH_SHORT).show();
         } else if (password.isEmpty()) {
@@ -82,6 +81,7 @@ public class LesseeLoginPage extends AppCompatActivity {
     }
     private void validateCredentials(String username, String password) {
         if (username.equals("admin") && password.equals("admin")) {
+            loading(false);
             Intent intent = new Intent(LesseeLoginPage.this, adminsignup.class);
             startActivity(intent);
         } else {
@@ -97,7 +97,7 @@ public class LesseeLoginPage extends AppCompatActivity {
         ApiEndpoints apiEndpoints = retrofit.create(ApiEndpoints.class);
 
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("username", username);
+        jsonObject.addProperty("email", username);
         jsonObject.addProperty("password", password);
 
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonObject.toString());
@@ -112,7 +112,7 @@ public class LesseeLoginPage extends AppCompatActivity {
 
                     String userId = createReponse.getId();
                     String password = createReponse.getPassword();
-                    String username = createReponse.getUsername();
+                    String username = createReponse.getEmail();
                     String contactNumber = createReponse.getContactnumber();
 
                     storeUserData(userId, password, username, contactNumber);
@@ -121,12 +121,16 @@ public class LesseeLoginPage extends AppCompatActivity {
 
 
                     // Finish the current SignIn activity
+                    loading(false);
+                    signIn();
                     finish();
                     Intent intent = new Intent(getApplicationContext(),LesseeDashboard.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 } else {
                     Toast.makeText(LesseeLoginPage.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
+                    loading(false);
+
                 }
 
             }
@@ -134,6 +138,8 @@ public class LesseeLoginPage extends AppCompatActivity {
             @Override
             public void onFailure(Call<LesseeResponse> call, Throwable t) {
                 Toast.makeText(LesseeLoginPage.this, "Server failed!", Toast.LENGTH_SHORT).show();
+                loading(false);
+
             }
         });
     }
@@ -144,21 +150,10 @@ public class LesseeLoginPage extends AppCompatActivity {
 
         editor.putString("userId", userId);
         editor.putString("password", password);
-        editor.putString("username", username);
+        editor.putString("email", username);
         editor.putString("contact_number", contactNumber);
 
         editor.apply();
-    }
-    private Boolean isValidSignIn(){
-        if (binding.LesseeUsername.getText().toString().trim().isEmpty()) {
-            Toast.makeText(LesseeLoginPage.this, "Please enter your username", Toast.LENGTH_SHORT).show();
-            return false;
-        } else if (binding.LesseePassword.getText().toString().trim().isEmpty()) {
-            Toast.makeText(LesseeLoginPage.this, "Please enter your password", Toast.LENGTH_SHORT).show();
-            return false;
-        } else {
-            return true;
-        }
     }
     private void showToast(String message) {
         Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
@@ -173,7 +168,6 @@ public class LesseeLoginPage extends AppCompatActivity {
         }
     }
     private void signIn(){
-        loading(true);
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection(Constants.KEY_COLLECTION_USERS)
                 .whereEqualTo(Constants.KEY_EMAIL, binding.LesseeUsername.getText().toString())
@@ -187,7 +181,6 @@ public class LesseeLoginPage extends AppCompatActivity {
                         preferenceManager.putString(Constants.KEY_USER_ID, documentSnapshot.getId());
                         preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
                         preferenceManager.putString(Constants.KEY_IMAGE, documentSnapshot.getString(Constants.KEY_IMAGE));
-
 
 
                     } else {
