@@ -37,7 +37,6 @@
 
     <!-- Grid buttons -->
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -70,11 +69,7 @@
                 android:textStyle="bold"
                 app:cornerRadius="15dp"
                 app:iconTint="#000000"
-                app:rippleColor="#CFCFCF"
-
-                android:elevation="10dp"
-                android:translationZ="2dp"
-                android:stateListAnimator="@null"/>
+                app:rippleColor="#CFCFCF" />
 
             <View
                 android:layout_width="0dp"

@@ -4,40 +4,249 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#08000000">
+    android:background="@color/input_background">
 
-    <TextView
-        android:id="@+id/WelcomeManager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingTop="40dp"
-        android:text="Your Property"
-        android:textColor="#22215B"
-        android:textSize="23dp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginLeft="123dp"
+            android:layout_marginTop="55dp"
+            android:gravity="center"
+            android:text="Browse Property"
+            android:textColor="@color/primary_text"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/YourProperty1"
-        android:layout_width="350dp"
-        android:layout_height="100dp"
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/WelcomeManager"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:columnCount="2"
+        android:rowCount="1">
 
-        android:backgroundTint="#FFFFFF"
-        android:drawableLeft="@drawable/property1"
-        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-        android:padding="10dp"
+        <RelativeLayout
+            android:id="@+id/viewProperty"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp">
 
-        android:text="Casa Carmelita Commercial Property"
-        android:textColor="#000000"
-        android:textAllCaps="false"
-        android:textSize="15sp"
-        android:textStyle="bold"
+            <View
+                android:id="@+id/propertyBackground"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:background="@drawable/white_card" />
 
-        app:cornerRadius="15dp"
-        app:iconTint="#000000" />
+            <ImageView
+                android:id="@+id/propertyImage"
+                android:layout_width="156dp"
+                android:layout_height="134dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:src="@drawable/property1" />
 
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/pin"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="242dp"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/propertyName"
+                android:layout_width="173.2dp"
+                android:layout_height="33.2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="152dp"
+                android:text="Casa Carmelita
+                        Commercial Property"
+                android:textColor="@color/primary_text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/leasePrice"
+                android:layout_width="173.2dp"
+                android:layout_height="18.2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="191dp"
+                android:text="₱ 7,000 per month"
+                android:textColor="@color/purple_500"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/propertyStatus"
+                android:layout_width="173.2dp"
+                android:layout_height="18.2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="214dp"
+                android:text="Leased"
+                android:textColor="#F44336"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/propertyLocation"
+                android:layout_width="161.2dp"
+                android:layout_height="18.2dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="240dp"
+                android:text="San Jose, Montalban"
+                android:textColor="@color/secondary_text"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/viewProperty1"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp">
+
+            <View
+                android:id="@+id/propertyBackground1"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:background="@drawable/white_card" />
+
+            <ImageView
+                android:id="@+id/propertyImage1"
+                android:layout_width="156dp"
+                android:layout_height="134dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:src="@drawable/property2" />
+
+            <ImageView
+                android:id="@+id/pin1"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="242dp"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/propertyName1"
+                android:layout_width="173.2dp"
+                android:layout_height="33.2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="152dp"
+                android:text="San Jose Montalban
+                        Commercial Property"
+                android:textColor="@color/primary_text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/leasePrice1"
+                android:layout_width="173.2dp"
+                android:layout_height="18.2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="191dp"
+                android:text="₱ 2,500 per month"
+                android:textColor="@color/purple_500"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/propertyStatus1"
+                android:layout_width="173.2dp"
+                android:layout_height="18.2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="214dp"
+                android:text="Leased"
+                android:textColor="#F44336"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/propertyLocation1"
+                android:layout_width="161.2dp"
+                android:layout_height="18.2dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="240dp"
+                android:text="San Jose, Montalban"
+                android:textColor="@color/secondary_text"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/viewProperty2"
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp">
+
+            <View
+                android:id="@+id/propertyBackground2"
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:background="@drawable/white_card" />
+
+            <ImageView
+                android:id="@+id/propertyImage2"
+                android:layout_width="156dp"
+                android:layout_height="134dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/property3" />
+
+            <ImageView
+                android:id="@+id/pin2"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="242dp"
+                android:src="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/propertyName2"
+                android:layout_width="173.2dp"
+                android:layout_height="33.2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="152dp"
+                android:text="Geronimo Near Plaza
+                        Commercial Property"
+                android:textColor="@color/primary_text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/leasePrice2"
+                android:layout_width="173.2dp"
+                android:layout_height="18.2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="191dp"
+                android:text="₱ 5,000 per month"
+                android:textColor="@color/purple_500"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/propertyStatus2"
+                android:layout_width="173.2dp"
+                android:layout_height="18.2dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="214dp"
+                android:text="Available"
+                android:textColor="#8BC34A"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/propertyLocation2"
+                android:layout_width="161.2dp"
+                android:layout_height="18.2dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="240dp"
+                android:text="Geronimo, Montalban"
+                android:textColor="@color/secondary_text"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+    </GridLayout>
+
+
+
+
+
+    </RelativeLayout>
