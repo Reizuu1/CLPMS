@@ -59,6 +59,7 @@ import android.net.Uri;
 
 public class ChatActivity extends BaseActivity {
 
+
     private ActivityChatBinding binding;
     private User receiverUser;
     private List<ChatMessage> chatMessages;
@@ -67,8 +68,6 @@ public class ChatActivity extends BaseActivity {
     private FirebaseFirestore database;
     private String conversionId = null;
     private Boolean isReceiverAvailable = false;
-    private static final int PICK_IMAGE_REQUEST = 1;
-    private Uri imageUri;
 
 
     @Override
@@ -173,23 +172,23 @@ public class ChatActivity extends BaseActivity {
             for (DocumentChange documentChange : value.getDocumentChanges()) {
                 if (documentChange.getType() == DocumentChange.Type.ADDED) {
 
-                ChatMessage chatMessage = new ChatMessage();
-                chatMessage.senderId = documentChange.getDocument().getString(Constants.KEY_SENDER_ID);
-                chatMessage.receiverId = documentChange.getDocument().getString(Constants.KEY_RECEIVER_ID);
-                chatMessage.message = documentChange.getDocument().getString(Constants.KEY_MESSAGE);
-                chatMessage.dateTime = getReadableDateTime(documentChange.getDocument().getDate(Constants.KEY_TIMESTAMP));
-                chatMessage.dateObject = documentChange.getDocument().getDate(Constants.KEY_TIMESTAMP);
-                chatMessages.add(chatMessage);
+                    ChatMessage chatMessage = new ChatMessage();
+                    chatMessage.senderId = documentChange.getDocument().getString(Constants.KEY_SENDER_ID);
+                    chatMessage.receiverId = documentChange.getDocument().getString(Constants.KEY_RECEIVER_ID);
+                    chatMessage.message = documentChange.getDocument().getString(Constants.KEY_MESSAGE);
+                    chatMessage.dateTime = getReadableDateTime(documentChange.getDocument().getDate(Constants.KEY_TIMESTAMP));
+                    chatMessage.dateObject = documentChange.getDocument().getDate(Constants.KEY_TIMESTAMP);
+                    chatMessages.add(chatMessage);
+                }
             }
-        }
-        Collections.sort(chatMessages, (obj1, obj2) -> obj1.dateObject.compareTo(obj2.dateObject));
-        if (count == 0) {
-            chatAdapter.notifyDataSetChanged();
-        } else {
-            chatAdapter.notifyItemRangeInserted(chatMessages.size(), chatMessages.size());
-            binding.chatRecyclerView.smoothScrollToPosition(chatMessages.size() - 1);
-        }
-        binding.chatRecyclerView.setVisibility(View.VISIBLE);
+            Collections.sort(chatMessages, (obj1, obj2) -> obj1.dateObject.compareTo(obj2.dateObject));
+            if (count == 0) {
+                chatAdapter.notifyDataSetChanged();
+            } else {
+                chatAdapter.notifyItemRangeInserted(chatMessages.size(), chatMessages.size());
+                binding.chatRecyclerView.smoothScrollToPosition(chatMessages.size() - 1);
+            }
+            binding.chatRecyclerView.setVisibility(View.VISIBLE);
         }
         binding.progressBar.setVisibility(View.GONE);
         if (conversionId == null) {
@@ -240,8 +239,6 @@ public class ChatActivity extends BaseActivity {
         }
         binding.inputMessage.setText(null);
     }
-
-
     private Bitmap getBitmapFromEncodedString(String encodedImage) {
         if(encodedImage != null) {
             byte[] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
@@ -255,7 +252,6 @@ public class ChatActivity extends BaseActivity {
         receiverUser = (User) getIntent().getSerializableExtra(Constants.KEY_USER);
         binding.textName.setText(receiverUser.name);
     }
-
     private void setListeners() {
         binding.imageBack.setOnClickListener(v -> onBackPressed());
         binding.layoutSend.setOnClickListener(v -> sendMessage());

@@ -2,10 +2,8 @@ package com.example.myloginapp.adapters;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.text.TextUtils;
 import android.util.Base64;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -20,8 +18,8 @@ import java.util.List;
 
 public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConversationsAdapter.ConversionViewHolder> {
 
-        private final List<ChatMessage> chatMessages;
-        private final ConversionListener conversionListener;
+    private final List<ChatMessage> chatMessages;
+    private final ConversionListener conversionListener;
 
     public RecentConversationsAdapter(List<ChatMessage> chatMessages, ConversionListener conversionListener) {
         this.chatMessages = chatMessages;
@@ -63,19 +61,8 @@ public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConve
         void setData(ChatMessage chatMessage) {
             binding.imageProfile.setImageBitmap(getConversionImage(chatMessage.conversionImage));
             binding.textName.setText(chatMessage.conversionName);
-
-            if (!TextUtils.isEmpty(chatMessage.message)) {
-                binding.textRecentMessage.setText(chatMessage.message);
-            } else if (chatMessage.messagepic != null) {
-                binding.textRecentMessage.setVisibility(View.GONE);
-                binding.imageRecentMessage.setVisibility(View.VISIBLE);
-                binding.imageRecentMessage.setText(binding.textName + "Sent a photo.");
-            } else {
-                binding.textRecentMessage.setVisibility(View.GONE);
-                binding.imageRecentMessage.setVisibility(View.GONE);
-            }
-
-            binding.getRoot().setOnClickListener(v -> {
+            binding.textRecentMessage.setText(chatMessage.message);
+            binding.getRoot().setOnClickListener( v -> {
                 User user = new User();
                 user.id = chatMessage.conversionId;
                 user.name = chatMessage.conversionName;
@@ -83,10 +70,9 @@ public class RecentConversationsAdapter extends RecyclerView.Adapter<RecentConve
                 conversionListener.onConversionClicked(user);
             });
         }
-
-        private Bitmap getConversionImage(String encodedImage) {
-            byte[] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
-            return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-        }
+    }
+    private Bitmap getConversionImage(String encodedImage) {
+        byte[] bytes = Base64.decode(encodedImage, Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(bytes,0,bytes.length);
     }
 }

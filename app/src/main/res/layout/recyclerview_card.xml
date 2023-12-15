@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/property_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="20dp"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/propertyimage"
+                android:layout_width="153.6dp"
+                android:layout_height="134.41dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_bg"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg"
+                android:foreground="?android:attr/selectableItemBackground"/>
+
+            <TextView
+                android:id="@+id/propertyname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
+                android:padding="5dp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:text="Property Name"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/lessorname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:padding="5dp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:text="Lessor"
+                android:textColor="#745AF1"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:padding="5dp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:text="Status"
+                android:textColor="#EC6C5A"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:padding="5dp"
+                android:drawablePadding="4dp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:text="Location"
+                android:drawableLeft="@drawable/maps_and_flags_copy_2"
+                android:textColor="#707575"
+                android:textSize="12dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    </RelativeLayout>

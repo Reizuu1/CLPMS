@@ -23,15 +23,16 @@ public class BaseActivity extends AppCompatActivity {
                 .document(preferenceManager.getString(Constants.KEY_USER_ID));
 
     }
+
     @Override
     protected void onPause() {
         super.onPause();
         documentReference.update(Constants.KEY_AVAILABILITY, 0);
     }
+
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         documentReference.update(Constants.KEY_AVAILABILITY, 1);
     }
-
 }

@@ -57,12 +57,14 @@ public class LesseeConcernFragment extends Fragment implements ConversionListene
         return binding.getRoot();
     }
 
-    private void init(){
+
+    private void init() {
         conversations = new ArrayList<>();
         conversationsAdapter = new RecentConversationsAdapter(conversations, this);
         binding.conversationsRecyclerView.setAdapter(conversationsAdapter);
         database = FirebaseFirestore.getInstance();
     }
+
     private void listenConversations() {
         database.collection(Constants.KEY_COLLECTION_CONVERSATIONS)
                 .whereEqualTo(Constants.KEY_SENDER_ID, preferenceManager.getString(Constants.KEY_USER_ID))
@@ -71,6 +73,7 @@ public class LesseeConcernFragment extends Fragment implements ConversionListene
                 .whereEqualTo(Constants.KEY_RECEIVER_ID, preferenceManager.getString(Constants.KEY_USER_ID))
                 .addSnapshotListener(eventListener);
     }
+
     private final EventListener<QuerySnapshot> eventListener = (value, error) -> {
         if (error != null) {
             return;
@@ -114,7 +117,7 @@ public class LesseeConcernFragment extends Fragment implements ConversionListene
             binding.progressBar.setVisibility(View.GONE);
         }
     };
-    @Override
+
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -130,6 +133,7 @@ public class LesseeConcernFragment extends Fragment implements ConversionListene
             });
         }
     }
+
     @Override
     public void onConversionClicked(User user) {
         Intent intent = new Intent(getActivity(), ChatActivity.class);

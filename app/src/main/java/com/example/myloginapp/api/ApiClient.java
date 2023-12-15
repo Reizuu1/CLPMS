@@ -17,6 +17,9 @@ public class ApiClient {
     public static ApiEndpoints getApiService() {
         return apiEndpoints;
     }
+
+
+    //FOR CHAT APP
     private static Retrofit retrofit = null;
     public static Retrofit getClient(){
         if(retrofit == null) {
