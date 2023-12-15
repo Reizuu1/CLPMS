@@ -1,12 +1,20 @@
 package com.example.myloginapp;
 
 
+import static android.app.PendingIntent.getActivity;
+
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Toast;
@@ -31,6 +39,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,6 +54,8 @@ import java.util.Objects;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import android.net.Uri;
+
 
 public class ChatActivity extends BaseActivity {
 
@@ -54,6 +67,9 @@ public class ChatActivity extends BaseActivity {
     private FirebaseFirestore database;
     private String conversionId = null;
     private Boolean isReceiverAvailable = false;
+    private static final int PICK_IMAGE_REQUEST = 1;
+    private Uri imageUri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -224,6 +240,7 @@ public class ChatActivity extends BaseActivity {
         }
         binding.inputMessage.setText(null);
     }
+
 
     private Bitmap getBitmapFromEncodedString(String encodedImage) {
         if(encodedImage != null) {

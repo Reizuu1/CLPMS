@@ -89,6 +89,7 @@ public class LesseeLoginPage extends AppCompatActivity {
         }
     }
     private void performNetworkValidation(String username, String password) {
+        signIn();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://ap-southeast-1.aws.data.mongodb-api.com/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -122,7 +123,6 @@ public class LesseeLoginPage extends AppCompatActivity {
 
                     // Finish the current SignIn activity
                     loading(false);
-                    signIn();
                     finish();
                     Intent intent = new Intent(getApplicationContext(),LesseeDashboard.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
