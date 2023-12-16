@@ -46,7 +46,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.MyLoginApp.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -22,6 +22,7 @@ public class LoginPage extends AppCompatActivity {
     public void LoginAsLessee(View view) {
         Intent intent = new Intent(this, LesseeLoginPage.class);
         startActivity(intent);
+        finish();
         overridePendingTransition( 0, R.anim.splash_fade_out);
 
     }
@@ -29,6 +30,7 @@ public class LoginPage extends AppCompatActivity {
     public void LoginAsLessor(View view) {
         Intent intent = new Intent(this, LessorLoginPage.class);
         startActivity(intent);
+        finish();
         overridePendingTransition( 0, R.anim.splash_fade_out);
 
     }
@@ -36,6 +38,7 @@ public class LoginPage extends AppCompatActivity {
     public void LoginAsManager(View view) {
         Intent intent = new Intent(this, ManagerLoginPage.class);
         startActivity(intent);
+        finish();
         overridePendingTransition( 0, R.anim.splash_fade_out);
 
     }

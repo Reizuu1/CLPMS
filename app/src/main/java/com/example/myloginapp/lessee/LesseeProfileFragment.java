@@ -45,18 +45,12 @@ public class LesseeProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Find the button by its ID
         Button btnNavigate = view.findViewById(R.id.LogoutButton);
 
-        // Set a click listener on the button
-        btnNavigate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Start the TargetActivity when the button is clicked
-                callActivityMethod();
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-            }
+        btnNavigate.setOnClickListener(v -> {
+            callActivityMethod();
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
         });
     }
 
