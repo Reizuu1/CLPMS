@@ -6,26 +6,171 @@
     android:layout_height="match_parent"
     tools:context=".manager.ManagerProfileFragment">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/frame_175a"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="167dp"/>
+
+    <TextView
+        android:id="@+id/account_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="John Jeric Palima"
+        android:textColor="#1A1E25"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/account_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/account_name"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text="palimajohnjeric@gmail.com"
+        android:textColor="#7D7F88"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+
+    <View
+        android:id="@+id/top_line"
+        android:layout_width="370dp"
+        android:layout_height="2dp"
+        android:layout_below="@id/account_email"
+        android:layout_marginTop="40dp"
+        android:background="#0D000000"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_line"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_personal_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/personal_details_icon"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+            android:gravity="center_vertical"
+            android:text="Personal Details"
+            android:textColor="#1A1E25"
+            android:textSize="18dp"
+            android:shadowColor="#808080"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"/>
+        <TextView
+            android:id="@+id/textview_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/settings_icon"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+            android:gravity="center_vertical"
+            android:text="Settings"
+            android:textColor="#1A1E25"
+            android:textSize="18dp"
+            android:shadowColor="#808080"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"/>
+        <TextView
+            android:id="@+id/textview_payment_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/payment_history_icon"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+            android:gravity="center_vertical"
+            android:text="Payment History"
+            android:textColor="#1A1E25"
+            android:textSize="18dp"
+            android:shadowColor="#808080"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"/>
+        <TextView
+            android:id="@+id/textview_faq"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/faq_icon"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+            android:gravity="center_vertical"
+            android:text="FAQ"
+            android:textColor="#1A1E25"
+            android:textSize="18dp"
+            android:shadowColor="#808080"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="1"/>
+
+        <View
+            android:id="@+id/bottom_line"
+            android:layout_width="370dp"
+            android:layout_height="2dp"
+            android:layout_below="@id/account_email"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:background="#0D000000"
+            android:layout_centerHorizontal="true"/>
+
+
+
+
+    </LinearLayout>
+
+
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/LogoutButton"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
+        android:layout_width="310dp"
+        android:layout_height="69dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="170dp"
-        android:backgroundTint="#567DF4"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="#14223B"
         android:text="Log Out"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="29dp"
+        android:textSize="17dp"
         android:textStyle="bold"
         app:cornerRadius="15dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/Home"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="-15dp"
+        android:gravity="center"
         android:text="Profile"
-        android:layout_centerInParent="true"/>
+        android:textColor="#22215B"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
 
 

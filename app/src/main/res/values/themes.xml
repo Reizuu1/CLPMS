@@ -22,4 +22,12 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <!-- Customize positive button -->
+        <item name="colorAccent">@color/black</item>
+
+        <!-- Customize negative button -->
+        <item name="android:textColorSecondary">@color/black</item>
+    </style>
+
 </resources>
