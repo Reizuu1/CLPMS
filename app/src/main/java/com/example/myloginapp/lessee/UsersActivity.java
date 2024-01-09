@@ -1,6 +1,6 @@
-package com.example.myloginapp;
+package com.example.myloginapp.lessee;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static com.example.myloginapp.utilities.Constants.KEY_COLLECTION_LESSORUSERS;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,8 +30,8 @@ public class UsersActivity extends BaseActivity implements UserListener {
         setContentView(binding.getRoot());
         preferenceManager = new PreferenceManager(getApplicationContext());
         setListeners();
-        getUsers();
-    }
+            getUsers();
+        }
 
     private void setListeners() {
         binding.imageBack.setOnClickListener(v -> onBackPressed());
@@ -40,7 +40,7 @@ public class UsersActivity extends BaseActivity implements UserListener {
     private void getUsers() {
         loading(true);
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        database.collection(Constants.KEY_COLLECTION_USERS)
+        database.collection(KEY_COLLECTION_LESSORUSERS)
                 .get()
                 .addOnCompleteListener(task -> {
                    loading(false);

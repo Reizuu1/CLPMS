@@ -2,6 +2,7 @@ package com.example.myloginapp.lessee;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -21,6 +22,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 
+import com.example.myloginapp.PropertyClickListener;
+import com.example.myloginapp.PropertyDetails;
 import com.example.myloginapp.PropertyResponse;
 import com.example.myloginapp.R;
 import com.example.myloginapp.adapters.PropertyAdapter;
@@ -52,7 +55,40 @@ public class LesseePropertyFragment extends Fragment {
         propertyAdapter = new PropertyAdapter(getContext(), properties);
         propertyRecyclerView.setAdapter(propertyAdapter);
 
+        propertyAdapter = new PropertyAdapter(getContext(), properties);
+
+        propertyAdapter.setPropertyClickListener(new PropertyAdapter.PropertyClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                if (position >= 0 && position < properties.size()) {
+                    PropertyResponse selectedProperty = properties.get(position);
+
+
+                    // Create an Intent to start PropertyDetails activity
+                    Intent intent = new Intent(getContext(), PropertyDetails.class);
+
+                    // Put the property details into the Intent
+                    intent.putExtra("propertyname", selectedProperty.getPropertyname());
+                    intent.putExtra("lessor", selectedProperty.getLessor());
+                    intent.putExtra("status", selectedProperty.getStatus());
+                    intent.putExtra("address", selectedProperty.getBarangay());
+                    intent.putExtra("floors", selectedProperty.getFloors());
+                    intent.putExtra("floorOcu", selectedProperty.getFloorOcu());
+                    intent.putExtra("lessee", selectedProperty.getLessee());
+                    intent.putExtra("unit", selectedProperty.getUnit());
+                    intent.putExtra("image", selectedProperty.getImage());
+
+                    // Start the activity
+                    startActivity(intent);
+                }
+            }
+        });
+
+        propertyRecyclerView.setAdapter(propertyAdapter);
+
+
         getUserEmailFromSharedPreferences();
+
 
         if (!userEmail.isEmpty()) {
             fetchProperty();

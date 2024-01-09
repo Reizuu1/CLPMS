@@ -62,7 +62,6 @@ public class LesseeLoginPage extends AppCompatActivity {
                 String getUsername = username.getText().toString().trim();
                 String getPassword = password.getText().toString().trim();
                     checkUsernameAndPassword(getUsername,getPassword);
-
             }
         });
     }
@@ -97,7 +96,7 @@ public class LesseeLoginPage extends AppCompatActivity {
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("email", username);
-        jsonObject.addProperty("password", password);
+        jsonObject.addProperty("password1", password);
 
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonObject.toString());
 

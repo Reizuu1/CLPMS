@@ -1,34 +1,23 @@
 package com.example.myloginapp.lessee;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.example.myloginapp.BaseActivity;
-import com.example.myloginapp.ChatActivity;
-import com.example.myloginapp.MainActivity;
-import com.example.myloginapp.R;
-import com.example.myloginapp.UsersActivity;
 import com.example.myloginapp.adapters.RecentConversationsAdapter;
-import com.example.myloginapp.databinding.ActivityLesseeLoginPageBinding;
 import com.example.myloginapp.databinding.FragmentLesseeConcernBinding;
 import com.example.myloginapp.listeners.ConversionListener;
 import com.example.myloginapp.model.ChatMessage;
 import com.example.myloginapp.model.User;
 import com.example.myloginapp.utilities.Constants;
 import com.example.myloginapp.utilities.PreferenceManager;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;

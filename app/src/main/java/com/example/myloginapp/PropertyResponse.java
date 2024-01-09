@@ -9,7 +9,7 @@ import android.util.Base64;
 public class PropertyResponse implements Parcelable {
 
     private String userEmail;
-    private String propertyname, lessor, status, address;
+    private String propertyname, lessor, status, barangay, street, floors, floorOcu, lessee, unit;
     private ImageData image;
 
     public static class ImageData implements Parcelable {
@@ -57,7 +57,12 @@ public class PropertyResponse implements Parcelable {
         propertyname = in.readString();
         lessor = in.readString();
         status = in.readString();
-        address = in.readString();
+        barangay = in.readString();
+        street = in.readString();
+        floors = in.readString();
+        floorOcu = in.readString();
+        lessee = in.readString();
+        unit = in.readString();
     }
 
     public static final Creator<PropertyResponse> CREATOR = new Creator<PropertyResponse>() {
@@ -83,7 +88,12 @@ public class PropertyResponse implements Parcelable {
         dest.writeString(propertyname);
         dest.writeString(lessor);
         dest.writeString(status);
-        dest.writeString(address);
+        dest.writeString(barangay);
+        dest.writeString(street);
+        dest.writeString(floors);
+        dest.writeString(floorOcu);
+        dest.writeString(lessee);
+        dest.writeString(unit);
 
     }
     public ImageData getImage(){return image;}
@@ -94,7 +104,16 @@ public class PropertyResponse implements Parcelable {
 
     public String getStatus(){return status;}
 
-    public String getAddress(){return address;}
+    public String getBarangay(){return barangay;}
+    public String getStreet(){return street;}
 
     public String getUserEmail(){return userEmail;}
+
+    public String getFloors(){return floors;}
+
+    public String getFloorOcu(){return floorOcu;}
+
+    public String getLessee(){return lessee;}
+
+    public String getUnit(){return unit;}
 }

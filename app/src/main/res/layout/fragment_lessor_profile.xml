@@ -55,24 +55,6 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textview_personal_details"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:drawablePadding="10dp"
-            android:drawableLeft="@drawable/personal_details_icon"
-            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-            android:gravity="center_vertical"
-            android:text="Personal Details"
-            android:textColor="#1A1E25"
-            android:textSize="18dp"
-            android:shadowColor="#808080"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="1"/>
-        <TextView
             android:id="@+id/textview_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -108,24 +90,6 @@
             android:shadowDx="1"
             android:shadowDy="1"
             android:shadowRadius="1"/>
-        <TextView
-            android:id="@+id/textview_faq"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:drawablePadding="10dp"
-            android:drawableLeft="@drawable/faq_icon"
-            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-            android:gravity="center_vertical"
-            android:text="FAQ"
-            android:textColor="#1A1E25"
-            android:textSize="18dp"
-            android:shadowColor="#808080"
-            android:shadowDx="1"
-            android:shadowDy="1"
-            android:shadowRadius="1"/>
 
         <View
             android:id="@+id/bottom_line"
@@ -136,14 +100,7 @@
             android:layout_gravity="center"
             android:background="#0D000000"
             android:layout_centerHorizontal="true"/>
-
-
-
-
     </LinearLayout>
-
-
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/LogoutButton"
         android:layout_width="310dp"

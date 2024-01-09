@@ -11,10 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.myloginapp.MainActivity;
 import com.example.myloginapp.R;
 import com.example.myloginapp.lessee.LesseeDashboard;
+import com.example.myloginapp.lessorpayment;
 
 public class LessorProfileFragment extends Fragment {
 
@@ -31,19 +33,25 @@ public class LessorProfileFragment extends Fragment {
 
         // Find the button by its ID
         Button btnNavigate = view.findViewById(R.id.LogoutButton);
+        TextView send = view.findViewById(R.id.textview_payment_history);
 
         // Set a click listener on the button
         btnNavigate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Start the TargetActivity when the button is clicked
                 callActivityMethod();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), lessorpayment.class);
+                startActivity(intent);
+            }
+        });
     }
-
     private void callActivityMethod() {
         LessorDashboard activity = (LessorDashboard) getActivity();
 

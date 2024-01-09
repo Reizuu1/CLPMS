@@ -1,27 +1,20 @@
-package com.example.myloginapp;
+package com.example.myloginapp.lessor;
 
 
-import static android.app.PendingIntent.getActivity;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.example.myloginapp.databinding.ActivityChatLessorBinding;
+import com.example.myloginapp.lessee.BaseActivity;
 import com.example.myloginapp.adapters.ChatAdapter;
-import com.example.myloginapp.api.ApiService;
 import com.example.myloginapp.api.ApiClient;
+import com.example.myloginapp.api.ApiService;
 import com.example.myloginapp.databinding.ActivityChatBinding;
 import com.example.myloginapp.model.ChatMessage;
 import com.example.myloginapp.model.User;
@@ -39,9 +32,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -54,13 +44,12 @@ import java.util.Objects;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import android.net.Uri;
 
 
-public class ChatActivity extends BaseActivity {
+public class ChatActivityLessor extends BaseActivity {
 
 
-    private ActivityChatBinding binding;
+    private ActivityChatLessorBinding binding;
     private User receiverUser;
     private List<ChatMessage> chatMessages;
     private ChatAdapter chatAdapter;
@@ -73,7 +62,7 @@ public class ChatActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityChatBinding.inflate(getLayoutInflater());
+        binding = ActivityChatLessorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setListeners();
         loadReceiverDetails();
@@ -133,7 +122,7 @@ public class ChatActivity extends BaseActivity {
     private void listenAvailabilityOfReceiver() {
         database.collection(Constants.KEY_COLLECTION_USERS).document(
                 receiverUser.id
-        ).addSnapshotListener(ChatActivity.this, (value, error) -> {
+        ).addSnapshotListener(ChatActivityLessor.this, (value, error) -> {
             if(error != null) {
                 return;
             }

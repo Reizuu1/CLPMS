@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".lessee_sendpay">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/Home"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="-15dp"
+        android:gravity="center"
+        android:text="Send Payment"
+        android:textColor="#22215B"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/addimage"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@id/Home"
+        android:background="@drawable/background_imagesquare"
+        android:layout_marginTop="40dp"/>
+
+    <TextView
+        android:id="@+id/textAddImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Add Image"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:gravity="center"
+        android:layout_below="@id/Home"
+        android:layout_marginTop="200dp"
+        android:textColor="@color/secondary_text"
+        android:textSize="10.00sp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lessee Name"
+        android:layout_below="@id/addimage"
+        android:layout_marginTop="40dp"
+        android:textColor="#14223B"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/inter_medium"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/LesseeUsername"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="@font/karla"
+        android:hint="Lessee Name"
+        android:inputType="text"
+        android:maxLines="1"
+        android:layout_below="@id/textView"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="12dp"
+        android:textColorHighlight="#14223B"
+        android:textColor="@color/black"
+        android:textColorHint="#14223B"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lessor Name"
+        android:layout_below="@id/LesseeUsername"
+        android:layout_marginTop="10dp"
+        android:textColor="#14223B"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/inter_medium"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/Lessor"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="@font/karla"
+        android:hint="Lessor Email"
+        android:inputType="text"
+        android:maxLines="1"
+        android:layout_below="@id/textView1"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:padding="12dp"
+        android:textColorHighlight="#14223B"
+        android:textColor="@color/black"
+        android:textColorHint="#14223B"
+        android:textSize="16dp" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/LogoutButton"
+        android:layout_width="310dp"
+        android:layout_height="69dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/Lessor"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#14223B"
+        android:text="SEND PAYMENT"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:cornerRadius="15dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

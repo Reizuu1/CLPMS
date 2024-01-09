@@ -8,7 +8,7 @@ public class LesseeResponse {
     @SerializedName("email")
     private String email;
 
-    @SerializedName("password")
+    @SerializedName("password1")
     private String password;
 
     @SerializedName("contact_number")

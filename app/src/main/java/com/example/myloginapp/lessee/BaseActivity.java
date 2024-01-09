@@ -1,4 +1,4 @@
-package com.example.myloginapp;
+package com.example.myloginapp.lessee;
 
 import android.os.Bundle;
 
@@ -19,7 +19,7 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         PreferenceManager preferenceManager = new PreferenceManager(getApplicationContext());
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        documentReference = database.collection(Constants.KEY_COLLECTION_USERS)
+        documentReference = database.collection(Constants.KEY_COLLECTION_LESSORUSERS)
                 .document(preferenceManager.getString(Constants.KEY_USER_ID));
 
     }

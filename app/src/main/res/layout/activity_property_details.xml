@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PropertyDetails">
+
+
+    <ImageView
+        android:id="@+id/propertyimage"
+        android:src="@drawable/rectangle_10"
+        android:layout_width="match_parent"
+        android:layout_height="406dp" />
+
+
+    <View
+        android:id="@+id/rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="510dp"
+        android:layout_marginTop="302dp"
+        android:background="@drawable/rectangleproperty" />
+
+    <TextView
+        android:id="@+id/propertyname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/rectangle"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="33dp"
+        android:text="PROPERTY NAME"
+        android:textColor="#0B182B"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/propertyname"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/locationlogo"
+        android:text="LOCATION"
+        android:textColor="#A3B4CC"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/namelessor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/location"
+        android:layout_marginTop="25dp"
+        android:text="Lessor"
+        android:layout_marginLeft="32dp"
+        android:textColor="#A3B4CC"
+        android:textSize="14sp" />
+
+    <View
+        android:id="@+id/locationlogo"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/propertyname"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/ic_location"
+        android:layout_marginLeft="32dp"
+        android:backgroundTint="#A3B4CC" />
+
+    <TextView
+        android:id="@+id/description"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/namelessor"
+        android:layout_marginTop="40dp"
+        android:text="Description"
+        android:layout_marginLeft="32dp"
+        android:textColor="#0B182B"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/floors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/description"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:text="floors"
+        android:textColor="#A3B4CC"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/floorsocu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/floors"
+        android:layout_marginTop="3dp"
+        android:text="Floors Occupant"
+        android:layout_marginLeft="32dp"
+        android:textColor="#A3B4CC"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/lessee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/floorsocu"
+        android:layout_marginTop="3dp"
+        android:text="Lessee"
+        android:layout_marginLeft="32dp"
+        android:textColor="#A3B4CC"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lessee"
+        android:layout_marginTop="3dp"
+        android:text="Unit"
+        android:layout_marginLeft="32dp"
+        android:textColor="#A3B4CC"
+        android:textSize="14sp" />
+
+    <FrameLayout
+        android:id="@+id/box"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/rectangle"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-21dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="-16dp"
+        android:layout_marginEnd="41dp"
+        android:layout_toEndOf="@+id/propertyname">
+    <View
+        android:id="@+id/status"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/propertystatusbg" />
+
+        <TextView
+            android:id="@+id/statustext"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available"
+            android:layout_gravity="center"
+            android:textColor="#fffFff"
+            android:textSize="14sp" />
+
+    </FrameLayout>
+</RelativeLayout>

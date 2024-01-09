@@ -1,38 +1,30 @@
 package com.example.myloginapp.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myloginapp.PropertyClickListener;
-import com.example.myloginapp.PropertyDetails;
 import com.example.myloginapp.PropertyResponse;
 import com.example.myloginapp.PropertyViewHolder;
 import com.example.myloginapp.R;
 
 import java.util.List;
-import android.view.View;
-import android.view.ViewGroup;
 
-
-
-
-public class PropertyAdapter extends RecyclerView.Adapter<PropertyViewHolder> {
+public class LessorProperty extends RecyclerView.Adapter<PropertyViewHolder> {
     private List<PropertyResponse> properties;
     private Context context;
-    private PropertyClickListener propertyClickListener;
+    private PropertyAdapter.PropertyClickListener propertyClickListener;
 
 
 
-    public PropertyAdapter(Context context, List<PropertyResponse> properties) {
+    public LessorProperty(Context context, List<PropertyResponse> properties) {
         this.properties = properties;
         this.context = context;
     }
@@ -59,7 +51,7 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyViewHolder> {
         }
 
         holder.propertyName.setText(property.getPropertyname());
-        holder.Lessor.setText("Lessor : " + property.getLessor());
+        holder.Lessor.setText("Lessee : " + property.getLessee());
         holder.Status.setText(property.getStatus());
         holder.Location.setText(property.getBarangay() + ", " + property.getStreet());
 
@@ -73,11 +65,4 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyViewHolder> {
     public int getItemCount() {
         return properties != null ? properties.size() : 0;
     }
-    public void setPropertyClickListener(PropertyClickListener propertyClickListener) {
-        this.propertyClickListener = propertyClickListener;
-    }
-    public interface PropertyClickListener {
-        void onItemClick(int position);
-    }
-
 }

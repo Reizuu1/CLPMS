@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.example.myloginapp.MainActivity;
 import com.example.myloginapp.R;
 import com.example.myloginapp.databinding.ActivityLessorDashboardBinding;
+import com.example.myloginapp.lessor.LessorReminderFragment;
 import com.example.myloginapp.utilities.Constants;
 import com.example.myloginapp.utilities.PreferenceManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

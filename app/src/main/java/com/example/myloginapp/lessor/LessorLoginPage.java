@@ -11,13 +11,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.myloginapp.adminsignup;
 import com.example.myloginapp.api.ApiEndpoints;
 import com.example.myloginapp.R;
 import com.example.myloginapp.databinding.ActivityLessorLoginPageBinding;
 import com.example.myloginapp.lessee.LesseeDashboard;
-import com.example.myloginapp.lessee.LesseeLoginPage;
-import com.example.myloginapp.propertyadd;
 import com.example.myloginapp.utilities.Constants;
 import com.example.myloginapp.utilities.PreferenceManager;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -47,7 +44,7 @@ public class LessorLoginPage extends AppCompatActivity {
         setContentView(binding.getRoot());
         preferenceManager = new PreferenceManager(getApplicationContext());
         if (preferenceManager.getBoolean(Constants.KEY_IS_SIGNED_INLESSOR)) {
-            Intent intent = new Intent(getApplicationContext(), LesseeDashboard.class);
+            Intent intent = new Intent(getApplicationContext(), LessorDashboard.class);
             startActivity(intent);
             finish();
         }
@@ -71,23 +68,14 @@ public class LessorLoginPage extends AppCompatActivity {
     }
         private void checkUsernameAndPassword(String username, String password){
             if(username.isEmpty()){
-                Toast.makeText(LessorLoginPage.this, "Please enter your username", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LessorLoginPage.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
             }else if(password.isEmpty()){
                 Toast.makeText(LessorLoginPage.this, "Please enter your password", Toast.LENGTH_SHORT).show();
             }else if(!username.isEmpty() && !password.isEmpty()){
                 validateCredentials(username, password);
             }
         }
-    private void validateCredentials(String username, String password) {
-        if (username.equals("property") && password.equals("property")) {
-            loading(false);
-            Intent intent = new Intent(LessorLoginPage.this, propertyadd.class);
-            startActivity(intent);
-        } else {
-            performNetworkValidation(username, password);
-        }
-    }
-    private void performNetworkValidation(String username, String password){
+    private void validateCredentials(String username, String password){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://ap-southeast-1.aws.data.mongodb-api.com/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -96,8 +84,8 @@ public class LessorLoginPage extends AppCompatActivity {
         ApiEndpoints apiEndpoints = retrofit.create(ApiEndpoints.class);
 
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("username", username);
-        jsonObject.addProperty("password", password);
+        jsonObject.addProperty("email", username);
+        jsonObject.addProperty("password1", password);
 
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonObject.toString());
 
@@ -109,10 +97,11 @@ public class LessorLoginPage extends AppCompatActivity {
                 if (response.code() == 200) {
                     String userId = createReponse.getId();
                     String password = createReponse.getPassword();
-                    String username = createReponse.getUsername();
+                    String email = createReponse.getEmail();
                     String contactNumber = createReponse.getContactnumber();
+                    String fullname = createReponse.getFullname();
 
-                    storeUserData(userId, password, username, contactNumber);
+                    storeUserData(userId, password, email, contactNumber, fullname);
                     Toast.makeText(LessorLoginPage.this, "Successfully login", Toast.LENGTH_SHORT).show();
 
                     // Finish the current SignIn activity
@@ -121,7 +110,7 @@ public class LessorLoginPage extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(LessorLoginPage.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LessorLoginPage.this, "Incorrect email or password", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -131,14 +120,15 @@ public class LessorLoginPage extends AppCompatActivity {
             }
         });
     }
-    private void storeUserData(String userId, String password, String username, String contactNumber) {
+    private void storeUserData(String userId, String password, String email, String contactNumber, String fullname) {
         SharedPreferences sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString("userId", userId);
         editor.putString("password", password);
-        editor.putString("username", username);
+        editor.putString("email", email);
         editor.putString("contact_number", contactNumber);
+        editor.putString("fullname", fullname);
 
         editor.apply();
     }
@@ -153,7 +143,7 @@ public class LessorLoginPage extends AppCompatActivity {
     }
     private Boolean isValidSignIn(){
         if (binding.LessorUsername.getText().toString().trim().isEmpty()) {
-            Toast.makeText(LessorLoginPage.this, "Please enter your username", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LessorLoginPage.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
             return false;
         } else if (binding.LessorPassword.getText().toString().trim().isEmpty()) {
             Toast.makeText(LessorLoginPage.this, "Please enter your password", Toast.LENGTH_SHORT).show();
@@ -169,7 +159,7 @@ public class LessorLoginPage extends AppCompatActivity {
         loading(true);
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection(Constants.KEY_COLLECTION_LESSORUSERS)
-                .whereEqualTo(Constants.KEY_USERNAME, binding.LessorUsername.getText().toString())
+                .whereEqualTo(Constants.KEY_EMAIL, binding.LessorUsername.getText().toString())
                 .whereEqualTo(Constants.KEY_PASSWORD, binding.LessorPassword.getText().toString())
                 .get()
                 .addOnCompleteListener(task -> {

@@ -8,20 +8,36 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="Leasing Management System"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyLoginApp">
         <activity
-            android:name=".propertyadd"
+            android:name=".lesseepayment"
+            android:exported="false" />
+        <activity
+            android:name=".lessorpayment"
+            android:exported="false" />
+        <activity
+            android:name=".recyclerview_payment"
+            android:exported="false" />
+        <activity
+            android:name=".lessee_sendpay"
+            android:exported="false" />
+        <activity
+            android:name=".lessee_payment"
+            android:exported="false" />
+        <activity
+            android:name=".PropertyDetails"
             android:exported="false" />
         <activity
             android:name=".adminsignup"
             android:exported="false" />
         <activity
-            android:name=".ChatActivity"
+            android:name=".lessee.ChatActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".UsersActivity"
+            android:name=".lessee.UsersActivity"
             android:exported="false" />
         <activity
             android:name=".manager.ManagerDashboard"

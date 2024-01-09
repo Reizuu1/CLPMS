@@ -17,7 +17,9 @@ import com.example.myloginapp.databinding.ActivityLessorLoginPageBinding;
 import com.example.myloginapp.databinding.ActivityManagerLoginPageBinding;
 import com.example.myloginapp.lessee.LesseeDashboard;
 import com.example.myloginapp.lessee.LesseeLoginPage;
+import com.example.myloginapp.lessor.LessorDashboard;
 import com.example.myloginapp.lessor.LessorLoginPage;
+import com.example.myloginapp.lessor.LessorResponse;
 import com.example.myloginapp.utilities.Constants;
 import com.example.myloginapp.utilities.PreferenceManager;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -39,7 +41,6 @@ public class ManagerLoginPage extends AppCompatActivity {
     private PreferenceManager preferenceManager;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +48,8 @@ public class ManagerLoginPage extends AppCompatActivity {
         binding = ActivityManagerLoginPageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         preferenceManager = new PreferenceManager(getApplicationContext());
-        if (preferenceManager.getBoolean(Constants.KEY_IS_SIGNED_INMANAGER)) {
-            Intent intent = new Intent(getApplicationContext(), LesseeDashboard.class);
+        if (preferenceManager.getBoolean(Constants.KEY_IS_SIGNED_INLESSOR)) {
+            Intent intent = new Intent(getApplicationContext(), LessorDashboard.class);
             startActivity(intent);
             finish();
         }
@@ -72,7 +73,7 @@ public class ManagerLoginPage extends AppCompatActivity {
     }
     private void checkUsernameAndPassword(String username, String password){
         if(username.isEmpty()){
-            Toast.makeText(ManagerLoginPage.this, "Please enter your username", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ManagerLoginPage.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
         }else if(password.isEmpty()){
             Toast.makeText(ManagerLoginPage.this, "Please enter your password", Toast.LENGTH_SHORT).show();
         }else if(!username.isEmpty() && !password.isEmpty()){
@@ -88,65 +89,57 @@ public class ManagerLoginPage extends AppCompatActivity {
         ApiEndpoints apiEndpoints = retrofit.create(ApiEndpoints.class);
 
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("username", username);
-        jsonObject.addProperty("password", password);
+        jsonObject.addProperty("email", "Lessor23@gmail.com");
+        jsonObject.addProperty("password1", "Lessor23");
 
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json"), jsonObject.toString());
 
-        Call<ManagerResponse> call = apiEndpoints.signinManager(requestBody);
-        call.enqueue(new Callback<ManagerResponse>() {
+        Call<LessorResponse> call = apiEndpoints.signinLessor(requestBody);
+        call.enqueue(new Callback<LessorResponse>() {
             @Override
-            public void onResponse(Call<ManagerResponse> call, Response<ManagerResponse> response) {
-                ManagerResponse createReponse = response.body();
+            public void onResponse(Call<LessorResponse> call, Response<LessorResponse> response) {
+                LessorResponse createReponse = response.body();
                 if (response.code() == 200) {
                     String userId = createReponse.getId();
                     String password = createReponse.getPassword();
-                    String username = createReponse.getUsername();
+                    String email = createReponse.getEmail();
                     String contactNumber = createReponse.getContactnumber();
+                    String fullname = createReponse.getFullname();
 
-                    storeUserData(userId, password, username, contactNumber);
+                    storeUserData(userId, password, email, contactNumber, fullname);
                     Toast.makeText(ManagerLoginPage.this, "Successfully login", Toast.LENGTH_SHORT).show();
 
                     // Finish the current SignIn activity
                     finish();
-                    Intent intent = new Intent(getApplicationContext(), ManagerDashboard.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    Intent intent = new Intent(getApplicationContext(),LessorDashboard.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(ManagerLoginPage.this, "Incorrect username or password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ManagerLoginPage.this, "Incorrect email or password", Toast.LENGTH_SHORT).show();
                 }
 
             }
             @Override
-            public void onFailure(Call<ManagerResponse> call, Throwable t) {
+            public void onFailure(Call<LessorResponse> call, Throwable t) {
                 Toast.makeText(ManagerLoginPage.this, "Server failed!", Toast.LENGTH_SHORT).show();
             }
         });
     }
-    private void storeUserData(String userId, String password, String username, String contactNumber) {
+    private void storeUserData(String userId, String password, String email, String contactNumber, String fullname) {
         SharedPreferences sharedPreferences = getSharedPreferences("user_data", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString("userId", userId);
         editor.putString("password", password);
-        editor.putString("username", username);
+        editor.putString("email", email);
         editor.putString("contact_number", contactNumber);
+        editor.putString("fullname", fullname);
 
         editor.apply();
-    }
-    private void loading(Boolean isLoading) {
-        if (isLoading) {
-            binding.loginManager.setVisibility(View.INVISIBLE);
-            binding.managerProgressbar.setVisibility(View.VISIBLE);
-        } else {
-            binding.managerProgressbar.setVisibility(View.VISIBLE);
-            binding.loginManager.setVisibility(View.INVISIBLE);
-        }
     }
 
     private Boolean isValidSignIn(){
         if (binding.ManagerUsername.getText().toString().trim().isEmpty()) {
-            Toast.makeText(ManagerLoginPage.this, "Please enter your username", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ManagerLoginPage.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
             return false;
         } else if (binding.ManagerPassword.getText().toString().trim().isEmpty()) {
             Toast.makeText(ManagerLoginPage.this, "Please enter your password", Toast.LENGTH_SHORT).show();
@@ -159,22 +152,20 @@ public class ManagerLoginPage extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),message, Toast.LENGTH_SHORT).show();
     }
     private void signIn(){
-        loading(true);
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        database.collection(Constants.KEY_COLLECTION_MANAGERUSERS)
-                .whereEqualTo(Constants.KEY_USERNAME, binding.ManagerUsername.getText().toString())
-                .whereEqualTo(Constants.KEY_PASSWORD, binding.ManagerPassword.getText().toString())
+        database.collection(Constants.KEY_COLLECTION_LESSORUSERS)
+                .whereEqualTo(Constants.KEY_EMAIL, "Lessor23@gmail.com")
+                .whereEqualTo(Constants.KEY_PASSWORD, "Lessor23")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful() && task.getResult() !=null
                             && task.getResult().getDocuments().size() > 0) {
                         DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
-                        preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_INMANAGER,true);
+                        preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_INLESSOR,true);
                         preferenceManager.putString(Constants.KEY_USER_ID, documentSnapshot.getId());
                         preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
 
                     } else {
-                        loading(false);
                     }
                 });
     }

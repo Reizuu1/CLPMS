@@ -4,62 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#08000000">
+    android:background="@color/input_background">
 
     <TextView
-        android:id="@+id/WelcomeManager"
+        android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="55dp"
         android:gravity="center"
-        android:paddingTop="40dp"
         android:text="Your Property"
-        android:textColor="#22215B"
-        android:textSize="23dp"
+        android:textColor="@color/primary_text"
+        android:textSize="17sp"
         android:textStyle="bold" />
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/YourProperty1"
-        android:layout_width="350dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/WelcomeManager"
-        android:layout_marginTop="30dp"
-
-        android:backgroundTint="#FFFFFF"
-        android:drawableLeft="@drawable/property1"
-        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-        android:padding="10dp"
-
-        android:text="Casa Carmelita Commercial Property"
-        android:textColor="#000000"
-        android:textAllCaps="false"
-        android:textSize="15sp"
-        android:textStyle="bold"
-
-        app:cornerRadius="15dp"
-        app:iconTint="#000000" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/YourProperty2"
-        android:layout_width="350dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/YourProperty1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/propertylessor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title"
         android:layout_marginTop="10dp"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:overScrollMode="never"/>
 
-        android:backgroundTint="#FFFFFF"
-        android:drawableLeft="@drawable/property2"
-        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-        android:padding="10dp"
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="@dimen/_25sdp"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_centerInParent="true"/>
 
-        android:text="San Jose Montalban Commercial Property"
-        android:textColor="#000000"
-        android:textAllCaps="false"
-        android:textSize="15sp"
-        android:textStyle="bold"
-
-        app:cornerRadius="15dp"
-        app:iconTint="#000000" />
 
 </RelativeLayout>

@@ -5,22 +5,27 @@ public class LessorResponse {
     @SerializedName("_id")
     private String id;
 
-    @SerializedName("username")
-    private String username;
+    @SerializedName("email")
+    private String email;
 
-    @SerializedName("password")
+    @SerializedName("password1")
     private String password;
 
     @SerializedName("contact_number")
     private String contactnumber;
 
+    @SerializedName("fullname")
+    private String fullname;
+
     @SerializedName("isValid")
     private boolean isValid;
 
     public String getId(){return id;}
-    public String getUsername(){return username;}
+    public String getEmail(){return email;}
     public String getPassword(){return password;}
     public String getContactnumber(){return contactnumber;}
+
+    public String getFullname(){return fullname;}
 
     public boolean isValid() {
         return isValid;
